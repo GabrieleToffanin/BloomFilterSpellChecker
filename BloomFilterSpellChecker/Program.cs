@@ -4,6 +4,6 @@ using System.Text;
 int capacity = 2000000;
 var filter = new Filter<string>(capacity);
 
-filter.add("dioCamaja");
+filter.add("Qualcosa");
 
-Console.WriteLine(filter.Contains("content"));
+Console.WriteLine(filter.Contains("Qualcosa"));
