@@ -29,7 +29,7 @@ namespace BloomFilterSpellChecker
         /// <summary>
         /// The best k iteration for hashing found by K
         /// </summary>
-        private readonly int hashFunctionCount;
+        public readonly int hashFunctionCount;
 
         /// <summary>
         /// delegate for fast using and splitting usage for method in case of String and Int
