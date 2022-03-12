@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BloomFilterSpellChecker
 {
     /// <summary>
-    /// Implementation of public hashing non-encryption alghorithm
+    /// Implementation of public hashing non-encryption alghorithm, 
+    /// 
     /// </summary>
     public partial class Filter<T>
     {

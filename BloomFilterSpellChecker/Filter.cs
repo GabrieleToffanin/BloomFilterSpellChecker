@@ -24,9 +24,24 @@ namespace BloomFilterSpellChecker
         /// <summary>
         /// That's where the bits 0 or 1 can be stored, representing this results in a set of (TRUE and FALSE) where TRUE = 1 and FALSE = 0
         /// </summary>
-        private readonly BitArray hashBits;
+        public readonly BitArray hashBits;
+
+        /// <summary>
+        /// The best k iteration for hashing found by K
+        /// </summary>
         private readonly int hashFunctionCount;
+
+        /// <summary>
+        /// delegate for fast using and splitting usage for method in case of String and Int
+        /// </summary>
         private readonly HashFunction getHash;
+
+        /// <summary>
+        /// Creating Delegate
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="seed"></param>
+        /// <returns>The value where 0 or 1 need to be stored</returns>
         public delegate int HashFunction(string input, uint seed);
 
 
@@ -91,6 +106,11 @@ namespace BloomFilterSpellChecker
             }
         }
 
+        /// <summary>
+        /// Check if hashBits contains the word or number <see cref="string"/> <c>item</c>
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns <see cref="bool"/>></returns>
         public bool Contains(string item)
         {
             int primaryHash = item.GetHashCode();
@@ -112,12 +132,14 @@ namespace BloomFilterSpellChecker
         ///  m = ------------
         ///        (ln2)^2
         ///        
-        /// this give us the best array size for reducing false positives.
+        /// this give us the best array size for reducing false positives, that can be caused by index position value overloading.
         /// </summary>
         private static int BestM(int capacity, float? errorRate)
         {
             return (int)Math.Ceiling(capacity * Math.Log((double)errorRate, 1.0 / Math.Pow(2, Math.Log(2.0))));
         }
+
+
         /// <summary>
         /// K is the best number of hash functions it can be calculated as :
         ///     m
@@ -129,6 +151,12 @@ namespace BloomFilterSpellChecker
             return (int)Math.Round(Math.Log(2.0) * BestM(capacity, errorRate) / capacity);
         }
 
+
+        /// <summary>
+        /// Finds the error Rate that is beetween 0 and 1 
+        /// </summary>
+        /// <param name="capacity"></param>
+        /// <returns></returns>
         private static float BestErrorRate(int capacity)
         {
             float c = (float)(1.0 / capacity);
@@ -137,6 +165,14 @@ namespace BloomFilterSpellChecker
             return (float)Math.Pow(0.6185, int.MaxValue / capacity);
         }
 
+
+        /// <summary>
+        /// Performs Dillinger and Manolis Double Hashing
+        /// </summary>
+        /// <param name="primaryHash"></param>
+        /// <param name="secondaryHash"></param>
+        /// <param name="i"></param>
+        /// <returns><see cref="int"/> Hashed Values</returns>
         private int ComputeHash(int primaryHash, int secondaryHash, int i)
         {
             int resultingHash = (primaryHash + (i * secondaryHash)) % this.hashBits.Count;

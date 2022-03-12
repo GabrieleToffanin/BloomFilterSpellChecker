@@ -6,4 +6,20 @@ var filter = new Filter<string>(capacity);
 
 filter.add("Qualcosa");
 
-Console.WriteLine(filter.Contains("Qualcosa"));
+List<string> wordList = new List<string>()
+{
+    "Ciao", "Gabriele", "Ti", "Saluta"
+};
+
+List<string> wordListToCheck = new List<string>()
+{
+    "Ciao", "Albero", "Saluta"
+};
+
+foreach(var item in wordList) filter.add(item);
+
+foreach(string item in wordListToCheck)
+{
+    Console.WriteLine($"The word {item} is contained in the collection ? {filter.Contains(item)}");
+}
+
