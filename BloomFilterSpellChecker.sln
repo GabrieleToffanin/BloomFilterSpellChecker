@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32210.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloomFilterSpellChecker", "BloomFilterSpellChecker\BloomFilterSpellChecker.csproj", "{BB34B36D-D794-4C75-93FA-E6604AD0B39F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB34B36D-D794-4C75-93FA-E6604AD0B39F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB34B36D-D794-4C75-93FA-E6604AD0B39F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB34B36D-D794-4C75-93FA-E6604AD0B39F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB34B36D-D794-4C75-93FA-E6604AD0B39F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {344A5FAE-719A-4B76-BBE3-E5885ED0A421}
+	EndGlobalSection
+EndGlobal
