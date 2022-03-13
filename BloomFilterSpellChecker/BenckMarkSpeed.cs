@@ -12,11 +12,18 @@ namespace BloomFilterSpellChecker
     {
         private delegate int HashFunction(string word = "Cane", uint seed = (uint)21);
         private static HashFunction hashAlgorithm = Filter<string>.Hash;
+        private static HashFunction betterHashAlgorithm = Filter<string>.NewerHash;
 
         [Benchmark]
         public void MurMur3HashingAlgorithmSpeed()
         {
-            var something = hashAlgorithm.Invoke;
+            var something = hashAlgorithm("Cane", 21);
+        }
+
+        [Benchmark]
+        public void MurMur3HashingAlgorithmWithoutUnnecessaryAllocAndBetterMemoryManagement()
+        {
+            var something = betterHashAlgorithm("Cane", 21);
         }
 
         [Benchmark(Baseline = true)]

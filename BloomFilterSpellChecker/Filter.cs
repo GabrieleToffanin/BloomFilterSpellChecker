@@ -84,7 +84,7 @@ namespace BloomFilterSpellChecker
             if(hashFunction == null)
             {
                 if (typeof(T) == typeof(string))
-                    this.getHash = Hash;
+                    this.getHash = NewerHash;
             }
             else
             {
@@ -99,6 +99,7 @@ namespace BloomFilterSpellChecker
         {
             int primaryHash = item.GetHashCode();
             int secondaryHash = this.getHash(item, (uint)hashFunctionCount);
+
             for(int i = 0; i < this.hashFunctionCount; i++)
             {
                 int hash = this.ComputeHash(primaryHash, secondaryHash, i);
